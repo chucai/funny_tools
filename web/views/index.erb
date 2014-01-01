@@ -1,0 +1,63 @@
+<div class="rows">
+  <div class="col-md-8" ng-controller="SiteController" ui-keyup="{'enter':'callback($event)'}">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">网站排名系统</h3>
+      </div>
+      <div class="panel-body">
+        <div class="fiter-input">
+         <div class="input-group">
+          <input type="text" class="form-control" ng-model="q" placeholder="请输入网站的名字" />
+          <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="search()" type="button">过滤</button>
+          </span>
+        </div>
+      </div>
+      <ul class="media-list">
+
+        <li class="media" ng-repeat="site in sites">
+          <a class="pull-left" href="http://{{ site.site }}">
+            <img class="media-object" src="/images/nothing.png" width="100px" height="90px" ng-src="{{ site.image_path }}" alt="{{ site.name }}">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">
+              <a href="http://{{ site.site }}" target="_blank">
+                <span class="badge active">{{ site.rank }}</span>
+                {{ site.name }}
+              </a>
+            </h4>
+            {{ site.description }}
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="panel-footer">
+      <div class="col-md-6">
+        当前页
+           <input type="text" class="input-sm"  ng-model="current_page" />
+          <button class="btn btn-default"  type="button" ng-click="goTo()">Go!</button>
+      </div>
+      <div class="col-md-6">
+      <span class="pull-right">chinaz.com收录</span>
+      当前记录一共 <span> {{ sites.length }}</span>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+<ul class="pager">
+  <li class="previous"><a href="javascript:void(0);" ng-click="prev()">&larr; Prev</a></li>
+  <li class="next"><a href="javascript:void(0)" ng-click="next()">Next &rarr;</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+  <div class="panel panel-info">
+    <div class="panel-heading panel-default">
+      <h3 class="panel-title">介绍</h3>
+    </div>
+    <div class="panel-body">
+      一共收录了6730个网站的排名
+    </div>
+  </div>
+</div>
+</div>
